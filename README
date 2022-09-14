@@ -1,3 +1,4 @@
+```python
 // Lo primero que hacemos para tener un server en NodeJS es cargar una //librería para  montarlo. Express es una muy buena.
 //--> npm i express
 
@@ -16,3 +17,4 @@ console.log('Estoy escuchando por http://localhost:3000 que es el puerto por el 
 
 //Con esto está listo el servidor de Node para que viva:
 //---> node server
+```

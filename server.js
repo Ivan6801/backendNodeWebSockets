@@ -7,7 +7,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 
-router.get("/message", function (req, res) {
+router.get("/", function (req, res) {
+  console.log(req.headers);
+
+  res.header({
+    "custom-header": "nuesto valor personalizado",
+    "otro-header": "el otro header",
+  });
   res.send("Lista de mensajes");
 });
 

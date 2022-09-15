@@ -32,9 +32,7 @@ router.delete("/message", function (req, res) {
   res.status(201).send({ error: "", body: "Creado correctamente" });
 });
 
-// app.use("/", function (req, res) {
-//   res.send("Hola");
-// });
+app.use("/app", express.static("public"));
 
 app.listen(3000);
 console.log("La aplicacion esta escuchando en http://localhost:3000");

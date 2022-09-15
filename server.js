@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const response = require("./network/response");
 const router = express.Router();
 
 var app = express();
@@ -7,18 +8,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 
-router.get("/", function (req, res) {
+router.get("/message", (req, res) => {
   console.log(req.headers);
-
   res.header({
-    "custom-header": "nuesto valor personalizado",
-    "otro-header": "el otro header",
+    "custom-header": "Nuestro valor personalizado",
   });
-  res.send("Lista de mensajes");
+  response.success(req, res, "Lista de mensajes");
 });
 
-router.post("/message", function (req, res) {
-  res.send("Hola desde post");
+router.post("/message", (req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  response.success(req, res, "Creado corretamente");
 });
 
 router.patch("/message", function (req, res) {
@@ -28,7 +29,7 @@ router.patch("/message", function (req, res) {
 router.delete("/message", function (req, res) {
   console.log(req.query);
   console.log(req.body);
-  res.send("Mensaje " + req.body.text + " añadido correctamente");
+  res.status(201).send({ error: "", body: "Creado correctamente" });
 });
 
 // app.use("/", function (req, res) {
